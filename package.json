@@ -7,7 +7,11 @@
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
-    "cdk": "cdk"
+    "cdk": "cdk",
+    "generate": "cdk synth --version-reporting false > synth.yaml",
+    "packageStuff": "aws cloudformation package --template-file synth.yaml --output-template-file packaged.yaml --s3-bucket iss-logs-cdk --region us-east-1",
+    "deploy": "aws cloudformation deploy --template-file packaged.yaml --stack-name dev-es --parameter-overrides applicationPrefix=dev --capabilities CAPABILITY_IAM --region us-east-1",
+    "singleCommandToDeploy": "npm run build && npm run generate && npm run packageStuff && npm run deploy"
   },
   "devDependencies": {
     "@types/node": "10.17.5",

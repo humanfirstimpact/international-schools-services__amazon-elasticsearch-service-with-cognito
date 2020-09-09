@@ -65,7 +65,6 @@ export class SearchStack extends Stack {
       ebsOptions: { volumeSize: 10, ebsEnabled: true },
       elasticsearchVersion: "7.7",
       domainName: applicationPrefix,
-
       // Trust the cognito authenticated Role
       accessPolicies: {
         "Version": "2012-10-17",
