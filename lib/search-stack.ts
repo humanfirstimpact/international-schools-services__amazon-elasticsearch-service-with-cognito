@@ -81,6 +81,19 @@ export class SearchStack extends Stack {
               "es:ESHttpDelete"
             ],
             "Resource": "arn:aws:es:" + this.region + ":" + this.account + ":domain/" + applicationPrefix + "/*"
+          },
+          {
+            "Effect": "Allow",
+            "Principal": {
+              "AWS": "arn:aws:iam::587854546101:role/firehose-role"
+            },
+            "Action": [
+              "es:ESHttpGet",
+              "es:ESHttpPut",
+              "es:ESHttpPost",
+              "es:ESHttpDelete"
+            ],
+            "Resource": "arn:aws:es:" + this.region + ":" + this.account + ":domain/" + applicationPrefix + "/*"
           }
         ]
       }
